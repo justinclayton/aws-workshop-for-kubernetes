@@ -470,17 +470,16 @@ Check the QoS:
 
 ==== BestEffort
 
-Check the resources:
+Check the resources on our original pod, which contained no limits or requests:
 
 	$ kubectl get pod/nginx-pod -o jsonpath={.spec.containers[].resources}
-	map[requests:map[cpu:100m]]
+	map[]
 
 Check the QoS:
 
 	$ kubectl get pod/nginx-pod -o jsonpath={.status.qosClass}
-	Burstable
-
-This should be `BestEffort` and filed as https://github.com/kubernetes/kubernetes/issues/55278[kubernetes#55278].
+	BestEffort
+	
 
 === Delete a Pod
 
